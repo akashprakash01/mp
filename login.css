@@ -1,0 +1,83 @@
+/* login.css */
+
+/* Container styles */
+/* You can remove this section if not needed */
+/* div {
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* Form styles */
+form {
+    background-color: #c78d8d;
+    padding: 40px;
+    border-radius: 5px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto; /* Center the form horizontally */
+    max-width: 400px; /* Limit the form width */
+}
+
+/* Form header styles */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Label styles */
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #555;
+}
+
+/* Input styles */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+/* Button styles */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Cancel button styles */
+button[type="button"] {
+    background-color: #ccc;
+}
+
+/* Submit button styles */
+button[type="submit"] {
+    background-color: #007bff;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Button hover effect for cancel button */
+button[type="button"]:hover {
+    background-color: #999;
+}
+
+/* Error message styles */
+.errmsg {
+    color: red;
+    margin-top: 5px;
+}

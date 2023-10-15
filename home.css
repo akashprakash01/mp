@@ -1,0 +1,83 @@
+.bac{
+    background-image: url('/imgs/bac.jpg');
+    background-size: "cover";
+    height:100vh;
+    margin-top: 70px;
+    background-repeat:no-repeat;
+  }
+
+
+.dropdown p {
+  cursor: pointer; 
+  color: #007bff;
+  font-weight: bold; 
+  display: inline-block; 
+  padding: 5px 10px; 
+  background-color: #f7f7f7; 
+  font-size: 25px;
+  transition: background-color 0.2s ease; 
+
+}
+.dropdown p:hover {
+  background-color: #0056b3; 
+  color: #fff; 
+}
+
+  
+  .pname{
+      text-align:right;
+      padding-right: 70px;
+      margin-top: 0px;
+  }
+  .head{
+    margin-top: 2px;
+      padding-left: 15%;
+      padding-top: 2%;
+      font-size:30px;
+  }
+  .hh2{
+   
+    font-size:50px;
+    
+  }
+  .st {
+      list-style-type: none;
+      margin-right: 10px;
+      margin-left: 10px;
+      
+      overflow: hidden;
+      background-color: #000000;
+     position: -webkit-sticky; /* Safari */
+      /*position: sticky;*/
+     
+    }
+    
+    li {
+      float: left;
+  
+    }
+    
+    li a {
+      display: block;
+      color: rgb(255, 255, 255);
+      text-align:center;
+      font-size:30px;
+     padding-right: 10px;
+      padding-left: 50px;
+      text-decoration: none;
+    }
+    
+    li a:hover {
+      background-color: #54b457;
+      transition: 1s;
+    }
+    .trip{  
+      padding-top: 10px;
+    
+    }
+    .tripo{
+      background-color: #000000;
+      
+      margin-left: 10px;
+      
+    }
