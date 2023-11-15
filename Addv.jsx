@@ -15,6 +15,8 @@ export default function Addv() {
   const [carImage, setCarImage] = useState(null);
   const [insuranceImage, setInsuranceImage] = useState(null);
   const [pollutionCertificateImage, setPollutionCertificateImage] = useState(null);
+  const [price, setprice] = useState('');
+  
 
   const showSuccessMessage = () => {
     toast.success('Data inserted successfully!', {
@@ -41,7 +43,8 @@ export default function Addv() {
     formData.append('carImage', carImage);
     formData.append('insuranceImage', insuranceImage);
     formData.append('pollutionCertificateImage', pollutionCertificateImage);
-
+    formData.append('price', price);
+    
     axios
       .post('http://localhost:8081/addcars', formData)
       .then((data) => {
@@ -56,12 +59,14 @@ export default function Addv() {
         setCarImage(null);
         setInsuranceImage(null);
         setPollutionCertificateImage(null);
+        setprice('');
         showSuccessMessage();
       });
   };
 
   return (
     <div className="addvdiv1">
+      
       <section className="addvcon1">
         <header>ADD CAR</header>
         <form onSubmit={submitHandler} className="form">
@@ -121,6 +126,17 @@ export default function Addv() {
             />
           </div>
           <div className="addv-input-box">
+            <label htmlFor="price">price:</label>
+            <input
+              type="number"
+              id="price"
+              name="price"
+              value={price}
+              onChange={(e) => price(e.target.value)}
+              required
+            />
+          </div>
+          <div className="addv-input-box">
             <label htmlFor="chassis_number">Chassis number:</label>
             <input
               type="text"
@@ -133,10 +149,12 @@ export default function Addv() {
           </div>
           <div className="addv-input-box">
             <label htmlFor="rc_details">RC Details:</label>
-            <input
+            <textarea
+            rows="8" cols="60"
               type="text"
               id="rc_details"
               name="rc_details"
+              
               value={rcdetails}
               onChange={(e) => setRcdetails(e.target.value)}
               required

@@ -31,7 +31,7 @@ export default function Viewcars() {
   return (
     <div className="bac">
       <table className="responsive-table">
-        <caption>View Cars</caption>
+        <header>View Cars</header>
         <table className="styled-table">
           <thead>
             <tr>
@@ -55,21 +55,19 @@ export default function Viewcars() {
                 <td>{car.vehicleName}</td>
                 <td>{car.modelYear}</td>
                 <td>{car.Fuel}</td>
-                <td>{car.VehicleClass}</td>
+                <td>{car.vehicleClass}</td>
                 <td>{car.Enginecc}</td>
                 <td>{car.Chassisnumber}</td>
                 <td>{car.rcdetails}</td>
                 <td>
-                  <img src={`http://localhost:8081/uploads/${car.carImage}`} alt={car.carImage} />
-                  <div>{car.carImage}</div>
+                  <img class="img2" src={`http://localhost:8081/uploads/car/${car.vId}`} alt={car.carImage} />
                 </td>
                 <td>
-                  <img src={`http://localhost:8081/uploads/${car.insuranceImage}`} alt={car.insuranceImage} />
-                  <div>{car.insuranceImage}</div>
+                  <img  class="img2" src={`http://localhost:8081/uploads/insurance/${car.vId}`} alt={car.insuranceImage} />
+                  
                 </td>
                 <td>
-                  <img src={`http://localhost:8081/uploads/${car.pollutionCertificateImage}`} alt={car.pollutionCertificateImage} />
-                  <div>{car.pollutionCertificateImage}</div>
+                  <img class="img2" src={`http://localhost:8081/uploads/pollution/${car.vId}`} alt={car.pollutionCertificateImage} />
                 </td>
               </tr>
             ))}

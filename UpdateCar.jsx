@@ -6,6 +6,8 @@ export default function UpdateCar() {
   const [vId, setId] = useState('');
   const [carData, setCarData] = useState(null);
   const [rcDetails, setRCDetails] = useState('');
+  const [insuranceImage, setInsuranceImage] = useState(null);
+  const [pollutionImage, setPollutionImage] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleIdChange = (e) => {
@@ -14,6 +16,14 @@ export default function UpdateCar() {
 
   const handleRCDetailsChange = (e) => {
     setRCDetails(e.target.value);
+  };
+
+  const handleInsuranceImageChange = (e) => {
+    setInsuranceImage(e.target.files[0]);
+  };
+
+  const handlePollutionImageChange = (e) => {
+    setPollutionImage(e.target.files[0]);
   };
 
   const fetchCarData = () => {
@@ -28,13 +38,29 @@ export default function UpdateCar() {
   };
 
   const updateRCDetails = () => {
-    // Make an API request to update the RC details of the car based on the provided ID
-    axios.put(`http://localhost:8081/updatecar/${vId}`, { rcdetails: rcDetails })
+    // Create a FormData object for file uploads
+    const formData = new FormData();
+    formData.append('rcdetails', rcDetails);
+    if (insuranceImage) {
+      formData.append('insuranceImage', insuranceImage);
+    }
+    if (pollutionImage) {
+      formData.append('pollutionImage', pollutionImage);
+    }
+
+    // Make an API request to update the car details
+    axios.put(`http://localhost:8081/updatecar/${vId}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
       .then(() => {
-        // Clear the car data, ID, and RC details after successful update
+        // Clear the car data, ID, and input fields after a successful update
         setCarData(null);
         setId('');
         setRCDetails('');
+        setInsuranceImage(null);
+        setPollutionImage(null);
         setIsEditing(false);
       })
       .catch((error) => {
@@ -77,6 +103,9 @@ export default function UpdateCar() {
                   <th>Engine CC</th>
                   <th>Chassis Number</th>
                   <th>RC Details</th>
+                  <th>Car Image</th>
+                  <th>Insurance Image</th>
+                  <th>Pollution Certificate Image</th>
                 </tr>
                 <tr>
                   <td>{carData.vId}</td>
@@ -88,13 +117,39 @@ export default function UpdateCar() {
                   <td>{carData.Chassisnumber}</td>
                   <td>
                     {isEditing ? (
-                      <input
+                       <textarea
+                      rows="8" cols="40"
                         type="text"
                         value={rcDetails}
                         onChange={handleRCDetailsChange}
                       />
                     ) : (
                       carData.rcdetails
+                    )}
+                  </td>
+                  <td>
+                    <img class="img2" src={`http://localhost:8081/uploads/car/${carData.vId}`} alt={carData.carImage} />
+                  </td>
+                  <td>
+                    {isEditing ? (
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleInsuranceImageChange}
+                      />
+                    ) : (
+                      <img class="img2" src={`http://localhost:8081/uploads/insurance/${carData.vId}`} alt={carData.insuranceImage} />
+                    )}
+                  </td>
+                  <td>
+                    {isEditing ? (
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handlePollutionImageChange}
+                      />
+                    ) : (
+                      <img class="img2" src={`http://localhost:8081/uploads/pollution/${carData.vId}`} alt={carData.pollutionCertificateImage} />
                     )}
                   </td>
                 </tr>

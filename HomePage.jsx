@@ -2,46 +2,50 @@ import React, { useState } from 'react';
 import './home.css'; // Import your CSS file
 import { Link } from 'react-router-dom';
 
+
+
 function HomePage() {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
-
-  const handleLogout = () => {
-    // Add your logout logic here
-    alert('Logout clicked'); // You can replace this with your actual logout code
-  };
+  
 
   return (
-    <>
-      <div className='pname' onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
-        <h1>ADMIN</h1>
-        {showDropdown && (
-          <div className='dropdown'>
-            <p onClick={handleLogout}>Logout</p>
-          </div>
-        )}
-      </div>
-      <div className='bac'>
-        <div className='head'>
-          <h2 className='hh2'>cars</h2>
-        </div>
-        <ul className='st'>
-          <li><a href="/viewcars">VIEW CARS</a></li>
-          <li><Link to="/addcars">ADD CARS</Link></li>
-          <li><Link to="/updatecars">UPDATE CARS</Link></li>
-          <li><Link to="/deletecars">DELETE CARS</Link></li>
-          <li><a href="#Docs">PENDING DOCS</a></li>
-          
-        </ul>
-        <ul className='trip'>
-        <li className='tripo'><a href="#Docs">Trip Details</a></li>
-        </ul>
-      </div>
-    </>
-  );
-}
+    
+    <div className="header">
+       {/* Render the Header component at the top of your HomePage */}
+       <div className="header__top">
+         {/* Your header top content */}
+       </div>
+       <div className="header__middle">
+         {/* Your header middle content */}
+       </div>
+
+       <div className='pname' onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
+         <h1>ADMIN</h1>
+         {showDropdown && (
+           <div className='dropdown'>
+              <Link to="/login">Logout</Link>
+           </div>
+         )}
+        
+       </div>
+       <div className='bac'>
+       <div class="topnav">
+   <a  href="/viewcars">VIEW CARS</a>
+   <a href="/addcars">Add Cars</a>
+   <a href="/updatecars">Update Cars</a>
+   <a href="/deletecars">Delete Cars</a>
+   <a href="/userslist">Users List</a>
+   <a href="/taxidrivers">Taxi Drivers</a>
+ </div>
+        
+       </div>
+     
+   </div>
+
+  )}
 
 export default HomePage;
